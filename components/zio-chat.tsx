@@ -10,9 +10,9 @@ const starters = [
   "Turn my launch idea into three concrete next steps.",
 ];
 
-export function ZioChat() {
+export function ZioChat({ initialMessages }: { initialMessages: import("ai").UIMessage[] }) {
   const [input, setInput] = useState("");
-  const { messages, sendMessage, status, stop, error } = useChat();
+  const { messages, sendMessage, status, stop, error } = useChat({ id: "zio-main", messages: initialMessages });
   const busy = status === "submitted" || status === "streaming";
 
   function submit(text: string) {
